@@ -106,3 +106,10 @@ p16([],_,_,R) -> p5(R);
 p16([_|T],N,N,R) -> p16(T,N,1,R);
 p16([H|T],N,C,R) -> p16(T,N,C+1,[H|R]).
 
+% P17 (*) Split a list into two parts; the length of the first part is given.
+p17(L,N) when is_list(L), is_number(N), length(L) >= N, N>0 ->
+	p17(L,N,0,[],[]).
+p17([],_,_,L,M) -> [p5(L)]++[p5(M)];
+p17([H|T],N,C,L,[]) when N>C -> p17(T,N,C+1,[H|L],[]);
+p17([H|T],N,C,L,M) -> p17(T,N,C+1,L,[H|M]).
+
