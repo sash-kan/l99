@@ -170,3 +170,10 @@ p21_test_() -> [
 	,?_assertEqual([a,alfa],l99:p21(alfa,[a],2))
 ].
 
+p22_test_() -> [
+	 ?_assertError(function_clause,l99:p22(a,a))
+	,?_assertError(function_clause,l99:p22(1,0))
+	,?_assertEqual([4,5,6,7,8,9],l99:p22(4,9))
+	,?_assertEqual([1],l99:p22(1,1))
+].
+

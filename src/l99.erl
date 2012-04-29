@@ -139,3 +139,8 @@ p21(E,L,N,N,R) -> p21(E,L,N,N+1,[E|R]);
 p21(_,[],_,_,R) -> p5(R);
 p21(E,[H|T],N,C,R) -> p21(E,T,N,C+1,[H|R]).
 
+% P22 (*) Create a list containing all integers within a given range.
+p22(I,K) when is_number(I), is_number(K), I=<K -> p22(I,K,[]).
+p22(N,N,R) -> p5([N|R]);
+p22(I,K,R) -> p22(I+1,K,[I|R]).
+
