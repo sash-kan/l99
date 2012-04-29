@@ -41,3 +41,12 @@ p6b([],[]) -> true;
 p6b([H|T],[H|U]) -> p6b(T,U);
 p6b(_,_) -> false.
 
+% P07 (**) Flatten a nested list structure.
+% solution with bif
+p7a(L) when is_list(L) -> lists:flatten(L).
+% solution without bif
+p7b(L) when is_list(L) -> p5(p7b(L,[])).
+p7b([],R) -> R;
+p7b([H|T],R) when is_list(H) -> p7b(T,p7b(H,R));
+p7b([H|T],R) -> p7b(T,[H|R]).
+
