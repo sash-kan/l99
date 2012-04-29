@@ -144,3 +144,12 @@ p18_test_() -> [
 	,?_assertEqual([a],l99:p18([a],1,1))
 ].
 
+p19_test_() -> [
+	 ?_assertError(function_clause,l99:p19(a,a))
+	,?_assertError(function_clause,l99:p19([a],0))
+	,?_assertError(function_clause,l99:p19([a],2))
+	,?_assertEqual([d,e,f,g,h,a,b,c],l99:p19([a,b,c,d,e,f,g,h],3))
+	,?_assertEqual([g,h,a,b,c,d,e,f],l99:p19([a,b,c,d,e,f,g,h],-2))
+	,?_assertEqual([a],l99:p19([a],1))
+].
+

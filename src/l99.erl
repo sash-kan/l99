@@ -122,3 +122,7 @@ p18(_,_,K,C,R) when C>K -> p18([],0,0,0,R);
 p18([_|T],I,K,C,R) when C<I -> p18(T,I,K,C+1,R);
 p18([H|T],I,K,C,R) -> p18(T,I,K,C+1,[H|R]).
 
+% P19 (**) Rotate a list N places to the left.
+p19(L,N) when N>0 -> [A,B]=p17(L,N), B++A;
+p19(L,N) when N<0 -> [A,B]=p17(L,length(L)+N), B++A.
+
