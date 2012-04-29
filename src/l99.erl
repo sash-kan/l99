@@ -94,3 +94,9 @@ p14(L) when is_list(L) -> p14(L,[]).
 p14([],R) -> p5(R);
 p14([H|T],R) -> p14(T,[H|[H|R]]).
 
+% P15 (**) Replicate the elements of a list a given number of times.
+p15(L,N) when is_list(L), is_number(N), N>0 -> p15(L,N,0,[]).
+p15([],_,_,R) -> p5(R);
+p15([_|T],N,N,R) -> p15(T,N,0,R);
+p15(L=[H|_],N,C,R) -> p15(L,N,C+1,[H|R]).
+
