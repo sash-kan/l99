@@ -14,3 +14,7 @@ p3(L,N) when is_list(L), is_number(N), N > 0, length(L) >= N -> p3(L,N,1).
 p3([H|_],N,N) -> H;
 p3([_|T],N,C) -> p3(T,N,C+1).
 
+% P04 (*) Find the number of elements of a list.
+% solution with bif
+p4a(L) when is_list(L) -> length(L).
+
