@@ -56,3 +56,9 @@ p8([],R) -> p5(R);
 p8([H|T],R=[H|_]) -> p8(T,R);
 p8([H|T],R) -> p8(T,[H|R]).
 
+% P09 (**) Pack consecutive duplicates of list elements into sublists.
+p9(L) when is_list(L) -> p9(L,[]).
+p9([],R) -> p5(R);
+p9([H|T],[R=[H|_]|U]) -> p9(T,[[H|R]|U]);
+p9([H|T],R) -> p9(T,[[H]|R]).
+
