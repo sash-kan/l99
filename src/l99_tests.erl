@@ -195,3 +195,11 @@ p24_test_() -> [
 	,?_assertEqual([1],l99:p24(1,1))
 ].
 
+p25_test_() -> [
+	 ?_assertError(function_clause,l99:p25(a))
+	,?_assertEqual(true,is_list(l99:p25([a,b,c,d,e,f])))
+	,?_assertEqual(6,length(ordsets:from_list(l99:p25([a,b,c,d,e,f]))))
+	,?_assertEqual([],l99:p25([]))
+	,?_assertEqual([a],l99:p25([a]))
+].
+
