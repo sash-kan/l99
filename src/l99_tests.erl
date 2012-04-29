@@ -43,3 +43,14 @@ p5_test_() -> [
 	,?_assertError(function_clause,l99:p5b(a))
 ].
 
+p6_test_() -> [
+	 ?_assertEqual(true,l99:p6a([x,a,m,a,x]))
+	,?_assertEqual(false,l99:p6a([x,a,m,a]))
+	,?_assertEqual(true,l99:p6a([]))
+	,?_assertError(function_clause,l99:p6a(a))
+	,?_assertEqual(true,l99:p6b([x,a,m,a,x]))
+	,?_assertEqual(false,l99:p6b([x,a,m,a]))
+	,?_assertEqual(true,l99:p6b([]))
+	,?_assertError(function_clause,l99:p6b(a))
+].
+

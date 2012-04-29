@@ -29,4 +29,15 @@ p5a(L) when is_list(L) -> lists:reverse(L).
 p5b(L) when is_list(L) -> p5b(L,[]).
 p5b([],R) -> R;
 p5b([H|T],R) -> p5b(T,[H|R]).
+% short name
+p5(L) -> p5b(L).
+
+% P06 (*) Find out whether a list is a palindrome.
+% solution a
+p6a(L) when is_list(L) -> L == p5(L).
+% solution b
+p6b(L) when is_list(L) -> p6b(L,p5(L)).
+p6b([],[]) -> true;
+p6b([H|T],[H|U]) -> p6b(T,U);
+p6b(_,_) -> false.
 
