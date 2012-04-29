@@ -62,3 +62,9 @@ p9([],R) -> p5(R);
 p9([H|T],[R=[H|_]|U]) -> p9(T,[[H|R]|U]);
 p9([H|T],R) -> p9(T,[[H]|R]).
 
+% P10 (*) Run-length encoding of a list.
+p10(L) when is_list(L) -> p10(L,[]).
+p10([],R) -> p5(R);
+p10([H|T],[[N,H]|U]) -> p10(T,[[N+1,H]|U]);
+p10([H|T],R) -> p10(T,[[1,H]|R]).
+
