@@ -16,3 +16,12 @@ p2_test_() -> [
 	,?_assertError(function_clause,l99:p2([a]))
 	,?_assertEqual([a,b],l99:p2([a,b]))
 ].
+
+p3_test_() -> [
+	 ?_assertEqual(c,l99:p3([a,b,c,d,e],3))
+	,?_assertError(function_clause,l99:p3(a,b))
+	,?_assertError(function_clause,l99:p3([a],2))
+	,?_assertError(function_clause,l99:p3([a],-1))
+	,?_assertError(function_clause,l99:p3([],0))
+].
+

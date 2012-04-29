@@ -9,3 +9,8 @@ p1(L=[_|T]) when length(L) > 1 -> p1(T).
 p2(L) when is_list(L), length(L) == 2 -> L;
 p2(L=[_|T]) when length(L) > 2 -> p2(T).
 
+% P03 (*) Find the K'th element of a list.
+p3(L,N) when is_list(L), is_number(N), N > 0, length(L) >= N -> p3(L,N,1).
+p3([H|_],N,N) -> H;
+p3([_|T],N,C) -> p3(T,N,C+1).
+
