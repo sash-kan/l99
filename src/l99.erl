@@ -100,3 +100,9 @@ p15([],_,_,R) -> p5(R);
 p15([_|T],N,N,R) -> p15(T,N,0,R);
 p15(L=[H|_],N,C,R) -> p15(L,N,C+1,[H|R]).
 
+% P16 (**) Drop every N'th element from a list.
+p16(L,N) when is_list(L), is_number(N), length(L) >= N, N>0 -> p16(L,N,1,[]).
+p16([],_,_,R) -> p5(R);
+p16([_|T],N,N,R) -> p16(T,N,1,R);
+p16([H|T],N,C,R) -> p16(T,N,C+1,[H|R]).
+
