@@ -29,5 +29,8 @@ p4_test_() -> [
 	 ?_assertEqual(0,l99:p4a([]))
 	,?_assertEqual(3,l99:p4a([a,b,c]))
 	,?_assertError(function_clause,l99:p4a(a))
+	,?_assertEqual(0,l99:p4b([]))
+	,?_assertEqual(3,l99:p4b([a,b,c]))
+	,?_assertError(function_clause,l99:p4b(a))
 ].
 

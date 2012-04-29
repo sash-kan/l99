@@ -17,4 +17,8 @@ p3([_|T],N,C) -> p3(T,N,C+1).
 % P04 (*) Find the number of elements of a list.
 % solution with bif
 p4a(L) when is_list(L) -> length(L).
+% solution without bif
+p4b(L) when is_list(L) -> p4b(L,0).
+p4b([],R) -> R;
+p4b([_|T],R) -> p4b(T,R+1).
 
