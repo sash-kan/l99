@@ -50,3 +50,9 @@ p7b([],R) -> R;
 p7b([H|T],R) when is_list(H) -> p7b(T,p7b(H,R));
 p7b([H|T],R) -> p7b(T,[H|R]).
 
+% P08 (**) Eliminate consecutive duplicates of list elements.
+p8(L) when is_list(L) -> p8(L,[]).
+p8([],R) -> p5(R);
+p8([H|T],R=[H|_]) -> p8(T,R);
+p8([H|T],R) -> p8(T,[H|R]).
+
