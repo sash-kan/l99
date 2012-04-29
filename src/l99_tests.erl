@@ -34,3 +34,12 @@ p4_test_() -> [
 	,?_assertError(function_clause,l99:p4b(a))
 ].
 
+p5_test_() -> [
+	 ?_assertEqual([],l99:p5a([]))
+	,?_assertEqual([c,b,a],l99:p5a([a,b,c]))
+	,?_assertError(function_clause,l99:p5a(a))
+	,?_assertEqual([],l99:p5b([]))
+	,?_assertEqual([c,b,a],l99:p5b([a,b,c]))
+	,?_assertError(function_clause,l99:p5b(a))
+].
+

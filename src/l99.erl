@@ -22,3 +22,11 @@ p4b(L) when is_list(L) -> p4b(L,0).
 p4b([],R) -> R;
 p4b([_|T],R) -> p4b(T,R+1).
 
+% P05 (*) Reverse a list.
+% solution with bif
+p5a(L) when is_list(L) -> lists:reverse(L).
+% solution without bif
+p5b(L) when is_list(L) -> p5b(L,[]).
+p5b([],R) -> R;
+p5b([H|T],R) -> p5b(T,[H|R]).
+
