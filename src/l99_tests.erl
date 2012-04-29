@@ -177,3 +177,12 @@ p22_test_() -> [
 	,?_assertEqual([1],l99:p22(1,1))
 ].
 
+p23_test_() -> [
+	 ?_assertError(function_clause,l99:p23(a,a))
+	,?_assertError(function_clause,l99:p23([a],-1))
+	,?_assertError(function_clause,l99:p23([a],2))
+	,?_assertEqual(true,is_list(l99:p23([a,b,c,d,e,f,g,h],3)))
+	,?_assertEqual(3,length(ordsets:from_list(l99:p23([a,b,c,d,e,f,g,h],3))))
+	,?_assertEqual([],l99:p23([a],0))
+].
+

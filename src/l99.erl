@@ -144,3 +144,9 @@ p22(I,K) when is_number(I), is_number(K), I=<K -> p22(I,K,[]).
 p22(N,N,R) -> p5([N|R]);
 p22(I,K,R) -> p22(I+1,K,[I|R]).
 
+% P23 (**) Extract a given number of randomly selected elements from a list.
+p23(L,N) when is_list(L), is_number(N), N>=0, length(L)>=N -> 
+	random:seed(now()), p23(L,N,[]).
+p23(_,0,R) -> R;
+p23(L,N,R) -> K=random:uniform(length(L)), p23(p20(L,K),N-1,[p3(L,K)|R]).
+
