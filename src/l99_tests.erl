@@ -161,3 +161,12 @@ p20_test_() -> [
 	,?_assertEqual([],l99:p20([a],1))
 ].
 
+p21_test_() -> [
+	 ?_assertError(function_clause,l99:p21(a,a,a))
+	,?_assertError(function_clause,l99:p21(a,[a],0))
+	,?_assertError(function_clause,l99:p21(a,[a],3))
+	,?_assertEqual([a,alfa,b,c,d],l99:p21(alfa,[a,b,c,d],2))
+	,?_assertEqual([alfa,a],l99:p21(alfa,[a],1))
+	,?_assertEqual([a,alfa],l99:p21(alfa,[a],2))
+].
+

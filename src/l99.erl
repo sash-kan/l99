@@ -132,3 +132,10 @@ p20([],_,_,R) -> p5(R);
 p20([_|T],K,K,R) -> p20(T,K,K+1,R);
 p20([H|T],K,C,R) -> p20(T,K,C+1,[H|R]).
 
+% P21 (*) Insert an element at a given position into a list.
+p21(E,L,N) when is_list(L), is_number(N), N>0, length(L)>=N-1 ->
+	p21(E,L,N,1,[]).
+p21(E,L,N,N,R) -> p21(E,L,N,N+1,[E|R]);
+p21(_,[],_,_,R) -> p5(R);
+p21(E,[H|T],N,C,R) -> p21(E,T,N,C+1,[H|R]).
+
