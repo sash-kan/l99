@@ -68,3 +68,10 @@ p10([],R) -> p5(R);
 p10([H|T],[[N,H]|U]) -> p10(T,[[N+1,H]|U]);
 p10([H|T],R) -> p10(T,[[1,H]|R]).
 
+% P11 (*) Modified run-length encoding.
+p11(L) when is_list(L) -> p11(L,[]).
+p11([],R) -> p5(R);
+p11([H|T],[H|U]) -> p11(T,[[2,H]|U]);
+p11([H|T],[[N,H]|U]) -> p11(T,[[N+1,H]|U]);
+p11([H|T],R) -> p11(T,[H|R]).
+
