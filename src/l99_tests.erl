@@ -136,3 +136,11 @@ p17_test_() -> [
 	,?_assertEqual([[a],[]],l99:p17([a],1))
 ].
 
+p18_test_() -> [
+	 ?_assertError(function_clause,l99:p18(a,a,a))
+	,?_assertError(function_clause,l99:p18([a],0,2))
+	,?_assertError(function_clause,l99:p18([a],1,2))
+	,?_assertEqual([c,d,e,f,g],l99:p18([a,b,c,d,e,f,g,h,i,k],3,7))
+	,?_assertEqual([a],l99:p18([a],1,1))
+].
+

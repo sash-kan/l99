@@ -113,3 +113,12 @@ p17([],_,_,L,M) -> [p5(L)]++[p5(M)];
 p17([H|T],N,C,L,[]) when N>C -> p17(T,N,C+1,[H|L],[]);
 p17([H|T],N,C,L,M) -> p17(T,N,C+1,L,[H|M]).
 
+% P18 (**) Extract a slice from a list.
+p18(L,I,K)
+	when is_list(L), is_number(I), is_number(K), I>0, I=<K, length(L)>=K ->
+	p18(L,I,K,1,[]).
+p18([],_,_,_,R) -> p5(R);
+p18(_,_,K,C,R) when C>K -> p18([],0,0,0,R);
+p18([_|T],I,K,C,R) when C<I -> p18(T,I,K,C+1,R);
+p18([H|T],I,K,C,R) -> p18(T,I,K,C+1,[H|R]).
+
