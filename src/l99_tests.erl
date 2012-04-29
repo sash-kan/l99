@@ -153,3 +153,11 @@ p19_test_() -> [
 	,?_assertEqual([a],l99:p19([a],1))
 ].
 
+p20_test_() -> [
+	 ?_assertError(function_clause,l99:p20(a,a))
+	,?_assertError(function_clause,l99:p20([a],0))
+	,?_assertError(function_clause,l99:p20([a],2))
+	,?_assertEqual([a,c,d],l99:p20([a,b,c,d],2))
+	,?_assertEqual([],l99:p20([a],1))
+].
+

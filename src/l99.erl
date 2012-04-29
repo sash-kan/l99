@@ -126,3 +126,9 @@ p18([H|T],I,K,C,R) -> p18(T,I,K,C+1,[H|R]).
 p19(L,N) when N>0 -> [A,B]=p17(L,N), B++A;
 p19(L,N) when N<0 -> [A,B]=p17(L,length(L)+N), B++A.
 
+% P20 (*) Remove the K'th element from a list.
+p20(L,K) when is_list(L), is_number(K), K>0, length(L)>=K -> p20(L,K,1,[]).
+p20([],_,_,R) -> p5(R);
+p20([_|T],K,K,R) -> p20(T,K,K+1,R);
+p20([H|T],K,C,R) -> p20(T,K,C+1,[H|R]).
+
