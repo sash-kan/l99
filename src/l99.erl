@@ -150,3 +150,6 @@ p23(L,N) when is_list(L), is_number(N), N>=0, length(L)>=N ->
 p23(_,0,R) -> R;
 p23(L,N,R) -> K=random:uniform(length(L)), p23(p20(L,K),N-1,[p3(L,K)|R]).
 
+% P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+p24(N,M) when is_number(N), is_number(M), N>0, M>=N -> p23(p22(1,M),N).
+
