@@ -63,16 +63,16 @@ p9([H|T],[R=[H|_]|U]) -> p9(T,[[H|R]|U]);
 p9([H|T],R) -> p9(T,[[H]|R]).
 
 % P10 (*) Run-length encoding of a list.
-p10(L) when is_list(L) -> p10(L,[]).
-p10([],R) -> p5(R);
-p10([H|T],[[N,H]|U]) -> p10(T,[[N+1,H]|U]);
-p10([H|T],R) -> p10(T,[[1,H]|R]).
+p10(L) when is_list(L) -> p10(p9(L),[],1,[]).
+p10([],[],_,R) -> p5(R);
+p10([H|T],[],_,R) -> p10(T,H,1,R);
+p10(L,[H|[]],N,R) -> p10(L,[],1,[[N,H]|R]);
+p10(L,[_|T],N,R) -> p10(L,T,N+1,R).
 
 % P11 (*) Modified run-length encoding.
-p11(L) when is_list(L) -> p11(L,[]).
+p11(L) when is_list(L) -> p11(p10(L),[]).
 p11([],R) -> p5(R);
-p11([H|T],[H|U]) -> p11(T,[[2,H]|U]);
-p11([H|T],[[N,H]|U]) -> p11(T,[[N+1,H]|U]);
+p11([[1,H]|T],R) -> p11(T,[H|R]);
 p11([H|T],R) -> p11(T,[H|R]).
 
 % P12 (**) Decode a run-length encoded list.
@@ -81,4 +81,11 @@ p12([],R) -> p5(R);
 p12([[0,_]|T],R) -> p12(T,R);
 p12([[N,H]|T],R) when is_number(N), N>0 -> p12([[N-1,H]|T],[H|R]);
 p12([H|T],R) -> p12(T,[H|R]).
+
+% P13 (**) Run-length encoding of a list (direct solution).
+p13(L) when is_list(L) -> p13(L,[]).
+p13([],R) -> p5(R);
+p13([H|T],[H|U]) -> p13(T,[[2,H]|U]);
+p13([H|T],[[N,H]|U]) -> p13(T,[[N+1,H]|U]);
+p13([H|T],R) -> p13(T,[H|R]).
 
