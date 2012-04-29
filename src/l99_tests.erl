@@ -91,3 +91,10 @@ p11_test_() -> [
 	,?_assertEqual([a],l99:p11([a]))
 ].
 
+p12_test_() -> [
+	 ?_assertError(function_clause,l99:p12(a))
+	,?_assertEqual([a,a,a,a,b,c,c,a,a,d,e,e,e,e],l99:p12(l99:p11([a,a,a,a,b,c,c,a,a,d,e,e,e,e])))
+	,?_assertEqual([],l99:p12(l99:p11([])))
+	,?_assertEqual([a],l99:p12(l99:p11([a])))
+].
+

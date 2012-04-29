@@ -75,3 +75,10 @@ p11([H|T],[H|U]) -> p11(T,[[2,H]|U]);
 p11([H|T],[[N,H]|U]) -> p11(T,[[N+1,H]|U]);
 p11([H|T],R) -> p11(T,[H|R]).
 
+% P12 (**) Decode a run-length encoded list.
+p12(L) when is_list(L) -> p12(L,[]).
+p12([],R) -> p5(R);
+p12([[0,_]|T],R) -> p12(T,R);
+p12([[N,H]|T],R) when is_number(N), N>0 -> p12([[N-1,H]|T],[H|R]);
+p12([H|T],R) -> p12(T,[H|R]).
+
