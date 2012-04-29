@@ -8,3 +8,11 @@ p1_test_() -> [
 	,?_assertEqual([d],l99:p1([a,b,c,d]))
 	,?_assertError(function_clause,l99:p1(a))
 ].
+
+p2_test_() -> [
+	 ?_assertEqual([c,d],l99:p2([a,b,c,d]))
+	,?_assertError(function_clause,l99:p2(a))
+	,?_assertError(function_clause,l99:p2([]))
+	,?_assertError(function_clause,l99:p2([a]))
+	,?_assertEqual([a,b],l99:p2([a,b]))
+].
