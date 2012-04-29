@@ -89,3 +89,8 @@ p13([H|T],[H|U]) -> p13(T,[[2,H]|U]);
 p13([H|T],[[N,H]|U]) -> p13(T,[[N+1,H]|U]);
 p13([H|T],R) -> p13(T,[H|R]).
 
+% P14 (*) Duplicate the elements of a list.
+p14(L) when is_list(L) -> p14(L,[]).
+p14([],R) -> p5(R);
+p14([H|T],R) -> p14(T,[H|[H|R]]).
+
