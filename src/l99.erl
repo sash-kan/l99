@@ -159,9 +159,8 @@ p25(L) when is_list(L) -> p23(L,length(L)).
 % P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list
 p26(1,L) when is_list(L) -> [[X]||X <- L];
 p26(N,L) when is_list(L), is_number(N), N>1 ->
-	[ [X|Y] || X <- L, Y <- p26(N-1,p26(L,[X],[])) ].
-p26([],_,R) -> p5(R);
-p26([H|T],[],R) -> p26(T,[],[H|R]);
-p26([X|T],[X],R) -> p26(T,[],R);
-p26([_|T],X,R) -> p26(T,X,R).
+	[ [X|Y] || X <- L, Y <- p26(N-1,p26(p5(L),[X],[])) ].
+p26([],_,R) -> R;
+p26([X|_],[X],R) -> R;
+p26([H|T],[X],R) -> p26(T,[X],[H|R]).
 
