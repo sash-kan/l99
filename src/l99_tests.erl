@@ -242,3 +242,13 @@ p31_test_() -> [
 	,?_assertEqual(false,l99:p31(998))
 ].
 
+p32_test_() -> [
+	 ?_assertError(function_clause,l99:p32(a,a))
+	,?_assertError(function_clause,l99:p32(a,1))
+	,?_assertError(function_clause,l99:p32(1,a))
+	,?_assertError(function_clause,l99:p32(1,0))
+	,?_assertError(function_clause,l99:p32(0,1))
+	,?_assertEqual(9,l99:p32(36,63))
+	,?_assertEqual(21,l99:p32(1071,462))
+].
+
