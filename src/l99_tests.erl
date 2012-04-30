@@ -203,3 +203,11 @@ p25_test_() -> [
 	,?_assertEqual([a],l99:p25([a]))
 ].
 
+p26_test_() -> [
+	 ?_assertError(function_clause,l99:p26(a,a))
+	,?_assertError(function_clause,l99:p26(1,a))
+	,?_assertEqual([[a,b],[a,c],[b,c]],l99:p26(2,[a,b,c]))
+	,?_assertEqual(220,length(l99:p26(3,[a,b,c,d,e,f,g,h,i,j,k,l])))
+	,?_assertEqual([[a]],l99:p26(1,[a]))
+].
+
