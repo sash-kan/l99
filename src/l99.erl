@@ -168,3 +168,30 @@ p26([H|T],[X],R) -> p26(T,[X],[H|R]).
 p27(P,[]) when is_list(P) -> [[]];
 p27(P,[H|T]) when is_list(P) -> [[X|Y]||X<-p26(H,P), Y<-p27(P--X,T)].
 
+% P28 (**) Sorting a list of lists according to length of sublists
+p28a(L) when is_list(L) -> p28_d(p28_s(p28_l(L))).
+p28b(L) when is_list(L) -> p28_d(p28_s(p28_f(p28_s(p28_l(L))))).
+%add lengths to list
+p28_l(L) -> p28_l(L,[]).
+p28_l([],R) -> R;
+p28_l([H|T],R) -> p28_l(T,[[length(H)|H]|R]).
+%delete lengths from list
+p28_d(L) -> p28_d(L,[]).
+p28_d([],R) -> R;
+p28_d([[_|H]|T],R) -> p28_d(T,[H|R]).
+%sort list on first (numeric) element
+p28_s([]) -> [];
+p28_s([[LH|H]|T]) -> p28_s([[LX|X]||[LX|X]<-T,LX>LH]) ++
+	[[LH|H]] ++ p28_s([[LX|X]||[LX|X]<-T,LX=<LH]).
+%change length to frequency
+p28_f(L) -> p28_m(p28_f(L,-1,0,[])).
+p28_f([],_,_,R) -> R;
+p28_f([[LH|H]|T],LH,C,R) -> p28_f(T,LH,C+1,[[C+1|H]|R]);
+p28_f([[LH|H]|T],_,_,R) -> p28_f(T,LH,1,[[1|H]|R]).
+%multply frequency
+p28_m(L) -> p28_m(L,1,[]).
+p28_m([],_,R) -> R;
+p28_m([[FH|H]|T],F,R) when FH==1 -> p28_m(T,FH,[[F|H]|R]);
+p28_m([[FH|H]|T],F,R) when F>=FH -> p28_m(T,F,[[F|H]|R]);
+p28_m([[FH|H]|T],_,R) -> p28_m(T,FH,[[FH|H]|R]).
+

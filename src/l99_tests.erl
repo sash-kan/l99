@@ -219,3 +219,15 @@ p27_test_() -> [
 	,?_assertEqual([[aldo,beat],[carla,david],[evi,flip,gary,hugo,ida]],hd(l99:p27([aldo,beat,carla,david,evi,flip,gary,hugo,ida],[2,2,5])))
 ].
 
+p28_test_() -> [
+	 ?_assertError(function_clause,l99:p28a(a))
+	,?_assertEqual([[o],[d,e],[d,e],[m,n],[a,b,c],[f,g,h],[i,j,k,l]],l99:p28a([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]]))
+	,?_assertEqual([[o],[i,j,k,l],[a,b,c],[f,g,h],[d,e],[d,e],[m,n]],l99:p28b([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]]))
+	,?_assertEqual([[2,e,f],[1,d],[3,a,b,c]],l99:p28_l([[a,b,c],[d],[e,f]]))
+	,?_assertEqual([[a,b,c],[d],[e,f]],l99:p28_d([[2,e,f],[1,d],[3,a,b,c]]))
+	,?_assertEqual([[3,a,b,c],[2,e,f],[1,d]],l99:p28_s([[2,e,f],[1,d],[3,a,b,c]]))
+	,?_assertEqual([[3,a],[3,b],[3,c],[1,b,c],[2,a,a,a],[2,b,b,b]],l99:p28_f([[1,a],[1,b],[1,c],[2,b,c],[3,a,a,a],[3,b,b,b]]))
+	,?_assertEqual([[2,b,b,b],[1,a,a,a],[1,b,c],[3,c],[2,b],[1,a]],l99:p28_f([[1,a],[1,b],[1,c],[2,b,c],[3,a,a,a],[3,b,b,b]],-1,0,[]))
+	,?_assertEqual([[3,a],[3,b],[3,c],[1,b,c],[2,a,a,a],[2,b,b,b]],l99:p28_m([[2,b,b,b],[1,a,a,a],[1,b,c],[3,c],[2,b],[1,a]]))
+].
+
