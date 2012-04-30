@@ -164,3 +164,7 @@ p26([],_,R) -> R;
 p26([X|_],[X],R) -> R;
 p26([H|T],[X],R) -> p26(T,[X],[H|R]).
 
+% P27 (**) Group the elements of a set into disjoint subsets.
+p27(P,[]) when is_list(P) -> [[]];
+p27(P,[H|T]) when is_list(P) -> [[X|Y]||X<-p26(H,P), Y<-p27(P--X,T)].
+

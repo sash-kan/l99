@@ -211,3 +211,11 @@ p26_test_() -> [
 	,?_assertEqual([[a]],l99:p26(1,[a]))
 ].
 
+p27_test_() -> [
+	 ?_assertError(function_clause,l99:p27(a,a))
+	,?_assertEqual([[]],l99:p27([a,b,c,d],[]))
+	,?_assertEqual([[[a],[b]],[[a],[c]],[[a],[d]],[[b],[a]],[[b],[c]],[[b],[d]],[[c],[a]],[[c],[b]],[[c],[d]],[[d],[a]],[[d],[b]],[[d],[c]]],l99:p27([a,b,c,d],[1,1]))
+	,?_assertEqual([[aldo,beat],[carla,david,evi],[flip,gary,hugo,ida]],hd(l99:p27([aldo,beat,carla,david,evi,flip,gary,hugo,ida],[2,3,4])))
+	,?_assertEqual([[aldo,beat],[carla,david],[evi,flip,gary,hugo,ida]],hd(l99:p27([aldo,beat,carla,david,evi,flip,gary,hugo,ida],[2,2,5])))
+].
+
