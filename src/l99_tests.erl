@@ -231,3 +231,14 @@ p28_test_() -> [
 	,?_assertEqual([[3,a],[3,b],[3,c],[1,b,c],[2,a,a,a],[2,b,b,b]],l99:p28_m([[2,b,b,b],[1,a,a,a],[1,b,c],[3,c],[2,b],[1,a]]))
 ].
 
+p31_test_() -> [
+	 ?_assertError(function_clause,l99:p31(a))
+	,?_assertError(function_clause,l99:p31(-1))
+	,?_assertError(function_clause,l99:p31(0))
+	,?_assertError(function_clause,l99:p31(1))
+	,?_assertEqual(true,l99:p31(7))
+	,?_assertEqual(true,l99:p31(2))
+	,?_assertEqual(true,l99:p31(997))
+	,?_assertEqual(false,l99:p31(998))
+].
+

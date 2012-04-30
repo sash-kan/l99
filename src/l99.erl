@@ -195,3 +195,9 @@ p28_m([[FH|H]|T],F,R) when FH==1 -> p28_m(T,FH,[[F|H]|R]);
 p28_m([[FH|H]|T],F,R) when F>=FH -> p28_m(T,F,[[F|H]|R]);
 p28_m([[FH|H]|T],_,R) -> p28_m(T,FH,[[FH|H]|R]).
 
+% P31 (**) Determine whether a given integer number is prime.
+p31(N) when is_number(N), N>1 -> p31(N,2).
+p31(N,K) when K*K>N -> true;
+p31(N,K) when N==trunc(N/K)*K -> false;
+p31(N,K) -> p31(N,K+1).
+
