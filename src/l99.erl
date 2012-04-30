@@ -207,3 +207,6 @@ p32_(X,X) -> X;
 p32_(X,Y) when X>Y -> p32_(X-Y,Y);
 p32_(X,Y) -> p32_(X,Y-X).
 
+% P33 (*) Determine whether two positive integer numbers are coprime.
+p33(X,Y) when is_integer(X), is_integer(Y), X>0, Y>0 -> p32(X,Y)==1.
+
