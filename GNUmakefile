@@ -3,11 +3,13 @@ ERLC_FLAGS=
 SOURCES=$(wildcard src/*.erl)
 HEADERS=$(wildcard src/*.hrl)
 OBJECTS=$(SOURCES:src/%.erl=ebin/%.beam)
-NOTEST=$(filter-out %_tests.beam,$(OBJECTS))
+NOTESTS=$(filter-out %_tests.beam,$(OBJECTS))
 
 all: ebin $(OBJECTS) test
 
-notest: ebin $(NOTEST)
+notest: ebin $(OBJECTS)
+
+notests: ebin $(NOTESTS)
 
 ebin:
 	mkdir $@
