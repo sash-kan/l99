@@ -244,3 +244,10 @@ p38(X) when is_integer(X), X>0 ->
 	{P37,R}=timer:tc(?MODULE,p37,[X]),
 	{P34,P37}.
 
+% P39 (*) A list of prime numbers.
+p39(X,Y) when is_integer(X), is_integer(Y), X>1, X=<Y -> p39_(p22(X,Y),[]).
+p39_([],R) -> p5(R);
+p39_([H|T],R) -> case p31(H) of
+	true -> p39_(T,[H|R]);
+	false -> p39_(T,R) end.
+

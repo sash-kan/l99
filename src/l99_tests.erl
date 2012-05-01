@@ -304,3 +304,9 @@ p38_test_() -> [
 	,?_assertMatch({X,Y} when X>Y*10,l99:p38(10090))
 ].
 
+p39_test_() -> [
+	 ?_assertError(function_clause,l99:p39(a,a))
+	,?_assertError(function_clause,l99:p39(1,1))
+	,?_assertEqual([2,3,5,7],l99:p39(2,10))
+].
+
