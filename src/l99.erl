@@ -267,3 +267,16 @@ p41b_(_,[],R) -> p5(R);
 p41b_(Z,[[A,B,C]|T],R) when B>=Z -> p41b_(Z,T,[[A,B,C]|R]);
 p41b_(Z,[_|T],R) -> p41b_(Z,T,R).
 
+% now numbering is taken from "prolog-problems"
+% (see mirror of the site in doc/prolog-problems)
+
+% 3.01 (**) Truth tables for logical expressions.
+p301(F) when is_function(F) -> [ [A,B,F(A,B)] || A<-[true,false],B<-[true,false] ].
+p301and(A,B) -> A and B.
+p301or(A,B) -> A or B.
+p301nand(A,B) -> not (A and B).
+p301nor(A,B) -> (not A) and (not B).
+p301xor(A,B) -> not (A==B).
+p301impl(A,B) -> case A and (not B) of true -> false; false -> true end.
+p301equ(A,B) -> A==B.
+
