@@ -223,3 +223,18 @@ p35(X,X,R) -> p5([X|R]);
 p35(X,C,R) when X==trunc(X/C)*C -> p35(trunc(X/C),C,[C|R]);
 p35(X,C,R) -> p35(X,C+1,R).
 
+% P36 (**) Determine the prime factors of a given positive integer (2).
+p36(X) when is_integer(X), X>1 -> p36(p35(X),[]).
+p36([],R) -> p5(R);
+p36([H|T],[[H,N]|R]) -> p36(T,[[H,N+1]|R]);
+p36([H|T],R) -> p36(T,[[H,1]|R]).
+
+% P37 (**) Calculate Euler's totient function phi(m) (improved).
+p37(X) when is_integer(X), X>0 -> p37(p36(X),1).
+p37([],R) -> R;
+p37([[P,M]|T],R) -> p37(T,R*(P-1)*p37_power(P,M-1)).
+p37_power(X,Y) when is_integer(X), is_integer(Y), X>0, Y>=0 ->
+	p37_power(X,Y,1).
+p37_power(_,0,R) -> R;
+p37_power(X,Y,R) -> p37_power(X,Y-1,X*R).
+

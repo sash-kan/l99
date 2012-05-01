@@ -279,3 +279,22 @@ p35_test_() -> [
 	,?_assertEqual([3,3,5,7],l99:p35(315))
 ].
 
+p36_test_() -> [
+	 ?_assertError(function_clause,l99:p36(a))
+	,?_assertError(function_clause,l99:p36(0))
+	,?_assertEqual([[2,2]],l99:p36(4))
+	,?_assertEqual([[3,2],[5,1],[7,1]],l99:p36(315))
+].
+
+p37_test_() -> [
+	 ?_assertError(function_clause,l99:p37(a))
+	,?_assertError(function_clause,l99:p37(0))
+	,?_assertEqual(4,l99:p37(10))
+	,?_assertEqual(1,l99:p37(2))
+	,?_assertEqual(2,l99:p37(3))
+	,?_assertEqual(2,l99:p37(4))
+	,?_assertEqual(4,l99:p37(5))
+	,?_assertEqual(144,l99:p37(315))
+	,?_assertEqual(8,l99:p37_power(2,3))
+].
+
