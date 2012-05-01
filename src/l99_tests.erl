@@ -272,3 +272,10 @@ p34_test_() -> [
 	,?_assertEqual(4,l99:p34(5))
 ].
 
+p35_test_() -> [
+	 ?_assertError(function_clause,l99:p35(a))
+	,?_assertError(function_clause,l99:p35(0))
+	,?_assertEqual([2,2],l99:p35(4))
+	,?_assertEqual([3,3,5,7],l99:p35(315))
+].
+
