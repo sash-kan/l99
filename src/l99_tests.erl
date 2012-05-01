@@ -358,3 +358,11 @@ p301_test_() -> [
 	,?_assertEqual([[true,true,true],[true,false,true],[false,true,false],[false,false,false]],l99:p301(fun (A,B) -> l99:p301and(A,l99:p301or(A,B)) end))
 ].
 
+p304_test_() -> [
+	 ?_assertError(function_clause,l99:p304(a))
+	,?_assertError(function_clause,l99:p304(0))
+	,?_assertEqual(["0","1"],l99:p304(1))
+	,?_assertEqual(["00","01","10","11"],l99:p304(2))
+	,?_assertEqual(["000","001","010","011","100","101","110","111"],l99:p304(3))
+].
+

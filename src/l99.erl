@@ -280,3 +280,8 @@ p301xor(A,B) -> not (A==B).
 p301impl(A,B) -> case A and (not B) of true -> false; false -> true end.
 p301equ(A,B) -> A==B.
 
+% 3.04 (**) Gray code.
+p304(N) when is_integer(N), N>0 -> p304_(N).
+p304_(1) -> ["0","1"];
+p304_(N) -> [ X++Y || X <- ["0","1"], Y <- p304_(N-1) ].
+
