@@ -210,3 +210,11 @@ p32_(X,Y) -> p32_(X,Y-X).
 % P33 (*) Determine whether two positive integer numbers are coprime.
 p33(X,Y) when is_integer(X), is_integer(Y), X>0, Y>0 -> p32(X,Y)==1.
 
+% P34 (**) Calculate Euler's totient function phi(m).
+p34(X) when is_integer(X), X>0 -> p34(X,1,0).
+p34(X,X,C) -> C;
+%p34(X,N,C) -> Y=p33(X,N),
+%	if Y -> p34(X,N+1,C+1);
+%		true -> p34(X,N+1,C) end.
+p34(X,N,C) -> case p33(X,N) of true -> p34(X,N+1,C+1); false-> p34(X,N+1,C) end.
+

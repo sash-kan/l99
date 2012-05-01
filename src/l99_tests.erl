@@ -262,3 +262,13 @@ p33_test_() -> [
 	,?_assertEqual(false,l99:p33(10,62))
 ].
 
+p34_test_() -> [
+	 ?_assertError(function_clause,l99:p34(a))
+	,?_assertError(function_clause,l99:p34(0))
+	,?_assertEqual(4,l99:p34(10))
+	,?_assertEqual(1,l99:p34(2))
+	,?_assertEqual(2,l99:p34(3))
+	,?_assertEqual(2,l99:p34(4))
+	,?_assertEqual(4,l99:p34(5))
+].
+
