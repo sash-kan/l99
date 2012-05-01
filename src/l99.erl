@@ -251,3 +251,8 @@ p39_([H|T],R) -> case p31(H) of
 	true -> p39_(T,[H|R]);
 	false -> p39_(T,R) end.
 
+% P40 (**) Goldbach's conjecture.
+p40(X) when is_number(X), X>2, X==trunc(X/2)*2 -> p40(X,p22(2,trunc(X/2))).
+p40(X,[H|T]) -> case p31(H) andalso p31(X-H) of
+	true -> [H,X-H]; false -> p40(X,T) end.
+

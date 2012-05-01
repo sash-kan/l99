@@ -310,3 +310,10 @@ p39_test_() -> [
 	,?_assertEqual([2,3,5,7],l99:p39(2,10))
 ].
 
+p40_test_() -> [
+	 ?_assertError(function_clause,l99:p40(a))
+	,?_assertError(function_clause,l99:p40(2))
+	,?_assertEqual([5,23],l99:p40(28))
+	,?_assertEqual([2,2],l99:p40(4))
+].
+
