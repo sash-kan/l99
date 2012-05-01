@@ -298,3 +298,9 @@ p37_test_() -> [
 	,?_assertEqual(8,l99:p37_power(2,3))
 ].
 
+p38_test_() -> [
+	 ?_assertError(function_clause,l99:p37(a))
+	,?_assertError(function_clause,l99:p37(0))
+	,?_assertMatch({X,Y} when X>Y*10,l99:p38(10090))
+].
+
