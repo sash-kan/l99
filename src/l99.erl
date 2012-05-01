@@ -240,7 +240,7 @@ p37_power(X,Y,R) -> p37_power(X,Y-1,X*R).
 
 % P38 (*) Compare the two methods of calculating Euler's totient function.
 p38(X) when is_integer(X), X>0 ->
-	{P34,_}=timer:tc(?MODULE,p34,[X]),
-	{P37,_}=timer:tc(?MODULE,p37,[X]),
+	{P34,R}=timer:tc(?MODULE,p34,[X]),
+	{P37,R}=timer:tc(?MODULE,p37,[X]),
 	{P34,P37}.
 
