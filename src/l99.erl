@@ -252,7 +252,18 @@ p39_([H|T],R) -> case p31(H) of
 	false -> p39_(T,R) end.
 
 % P40 (**) Goldbach's conjecture.
-p40(X) when is_number(X), X>2, X==trunc(X/2)*2 -> p40(X,p22(2,trunc(X/2))).
+p40(X) when is_integer(X), X>2, X==trunc(X/2)*2 -> p40(X,p22(2,trunc(X/2))).
 p40(X,[H|T]) -> case p31(H) andalso p31(X-H) of
 	true -> [H,X-H]; false -> p40(X,T) end.
+
+% P41 (**) A list of Goldbach compositions.
+p41a(X,Y) when is_integer(X), is_integer(Y), X>2, X=<Y -> p41a_(p22(X,Y),[]).
+p41a_([],R) -> p5(R);
+p41a_([H|T],R) when H==trunc(H/2)*2 -> p41a_(T,[[H|p40(H)]|R]);
+p41a_([_|T],R) -> p41a_(T,R).
+p41b(X,Y,Z) when is_integer(X), is_integer(Y), X>2, X=<Y, Z>2 ->
+	p41b_(Z,p41a(X,Y),[]).
+p41b_(_,[],R) -> p5(R);
+p41b_(Z,[[A,B,C]|T],R) when B>=Z -> p41b_(Z,T,[[A,B,C]|R]);
+p41b_(Z,[_|T],R) -> p41b_(Z,T,R).
 

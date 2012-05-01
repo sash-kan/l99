@@ -317,3 +317,12 @@ p40_test_() -> [
 	,?_assertEqual([2,2],l99:p40(4))
 ].
 
+p41_test_() -> [
+	 ?_assertError(function_clause,l99:p41a(a,a))
+	,?_assertError(function_clause,l99:p41a(2,2))
+	,?_assertEqual([[10,3,7],[12,5,7],[14,3,11],[16,3,13],[18,5,13],[20,3,17]],l99:p41a(9,20))
+	,?_assertError(function_clause,l99:p41b(a,a,a))
+	,?_assertError(function_clause,l99:p41b(2,2,2))
+	,?_assertEqual([[992,73,919],[1382,61,1321],[1856,67,1789],[1928,61,1867]],l99:p41b(3,2000,50))
+].
+
